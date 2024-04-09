@@ -24,3 +24,4 @@ Markdownで書いて
 
 ### 参考
 - [markdown-blog-editor](https://github.com/yosiakatsuki/markdown-blog-editor)
+- → marked.min.jsが機能しなかったのでバージョン変更(https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js)
