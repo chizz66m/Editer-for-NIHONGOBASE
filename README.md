@@ -1,7 +1,7 @@
 # Markdown Blog Editor
 
 MarkDown to HTML のエディター
-NIHONGOBASE用に用意したものです。
+個人開発のNIHONGOBASE用に用意したもの。
 
 Markdownで書いて
 → HTMLに変換して
