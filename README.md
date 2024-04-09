@@ -3,6 +3,9 @@
 MarkDown to HTML のエディター
 個人開発のNIHONGOBASE用に用意したもの。
 
+こちらのリポジトリ参考(https://github.com/yosiakatsuki/markdown-blog-editor)
+マークダウン記法に慣れていないので、同一画面へメモ追加(自分が使うもののみ)
+
 Markdownで書いて
 → HTMLに変換して
 → ブログの投稿画面に貼り付けて
