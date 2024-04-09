@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="NIHONGOBASE用マークダウンエディタです">
+  <meta property="fb:app_id" content="1901725903435610"/>
+  <meta property="og:title" content="Markdown Editor for NIHONGOBASE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./images/icon.png" />
+  <meta property="og:description" content="NIHONGOBASE用マークダウンエディタです">
+  <meta name="twitter:card" content="summary" />
+  <link rel="apple-touch-icon" href="./images/icon.png" />
+  <link rel="icon" href="./images/icon.png" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
+	<title>Markdown Editor for NIHONGOBASE</title>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118266963-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-118266963-1');
+	</script>
+</head>
+<body>
+	<header class="fixed-top">
+		<nav class="navbar navbar-light bg-light h-100">
+			<h1 class="h5 text-muted my-0">Markdown Editor for NIHONGOBASE</h1>
+			<p class="my-0 text-muted">
+			</p>
+		</nav>
+	</header>
+	<main class="py-5" >
+		<div class="sampleCode"style="margin:10px;display: flex; gap: 70px ;">
+			<div>
+				<p>
+					<strong>hタグ</strong><br>
+					# 見出し1<br>
+					## 見出し2<br>
+					### 見出し3<br>
+					#### 見出し4<br>
+					##### 見出し5<br>
+					###### 見出し6
+				</p>
+			</div>
+			<div>
+				<p>
+					<strong>Listタグ</strong><br>
+					- リスト1<br>
+					- リスト2<br>
+					- リスト3<br>
+				</p>
+			</div>
+			<div>
+				<p>
+					<strong>Strongタグ</strong><br>
+							normal **bold** normal<br>
+							normal __bold__ normal
+				</p>
+			</div>
+			<div>
+				<p>
+					<strong>リンクタグ</strong><br>
+					[文字](URL)<br>
+					(画像url)<br>
+					![](画像URL =100x) // 縦を省略<br>
+					![](画像URL =x100) // 幅を省略<br>
+					![](https://docbase.io/ogp.png =200x)
+				</p>
+			</div>
+			<div>
+				<p>
+					<strong>テーブルタグ</strong><br>
+					|カラム|カラム|カラム|<br>
+					|--|--|--|<br>
+					|要素|要素|要素|<br>
+					|要素a|要素b|要素c|<br>
+				</p>
+			</div>
+
+</div>
+<div class="sampleCode" style="margin:10px;display: flex; gap: 100px ;">
+	<div>
+		<p>
+			<strong>blockquoteタグ</strong><br>
+			> こんにちは<br>
+			> こんばんわ
+		</p>
+	</div>
+	<div>
+		<p>
+				<strong>(CODE)ブロックタグ</strong><br>
+				```Plane<br>
+				ここに文章を<br>
+				書いてね<br>
+				```
+			</p>
+	</div>
+	<div>
+		<p>
+			<strong>CODEタグ</strong><br>
+			ここは `注意` です<br>
+			ここは <code>注意</code> です
+		</p>
+	</div>
+</div>
+
+
+		<div class="py-3">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-6">
+						<textarea id="editor-main" name="markdown" rows="8" cols="80"></textarea>
+					</div><!-- .col-6 -->
+					<div class="col-6">
+						<div class="row flex-column h-100">
+							<div class="col">
+								<div class="position-relative w-100 h-100">
+									<div class="card position-absolute h-100 w-100">
+										<div id="preview" class="card-body p-3 markdown-body"></div><!-- #preview -->
+									</div><!-- .card -->
+								</div><!-- .position-relative -->
+							</div><!-- .col -->
+							<div class="col-auto mt-3 w-100">
+								<button id="html-copy" type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#copy">
+									<i class="fas fa-paperclip mr-2"></i>HTMLをコピー
+								</button>
+							</div><!-- .col -->
+						</div><!-- .row -->
+					</div><!-- .col-6 -->
+				</div><!-- .row -->
+			</div><!-- .container -->
+		</div>
+	</main>
+	<footer class="fixed-bottom bg-light">
+		<div class="container-fluid h-100">
+			<div class="row align-items-center justify-content-between h-100">
+				<div class="col">
+
+				</div><!-- .col -->
+				<div class="col-auto">
+					<p class="my-0 text-muted"><small>※画面構成や仕様は突然変更される場合がございますがご了承下さい</small></p>
+				</div><!-- .col -->
+			</div><!-- .row -->
+		</div>
+	</footer>
+	<div class="modal fade" id="copy" tabindex="-1" role="dialog" aria-labelledby="copy" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<p class="text-center m-0 py-3">コピーしました！</p>
+			</div>
+		</div>
+	</div>
+	<script src="./js/script.js"></script>
+</body>
+</html>
