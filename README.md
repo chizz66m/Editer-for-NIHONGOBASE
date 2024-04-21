@@ -1,7 +1,10 @@
 # Markdown Blog Editor
 
 MarkDown to HTML のエディター
-NIHONGOBASE用に用意したものです。
+個人開発のNIHONGOBASE用に用意したもの。
+
+こちらのリポジトリ参考(https://github.com/yosiakatsuki/markdown-blog-editor)
+マークダウン記法に慣れていないので、同一画面へメモ追加(自分が使うもののみ)
 
 Markdownで書いて
 → HTMLに変換して
@@ -24,3 +27,4 @@ Markdownで書いて
 
 ### 参考
 - [markdown-blog-editor](https://github.com/yosiakatsuki/markdown-blog-editor)
+- → marked.min.jsが機能しなかったのでバージョン変更(https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js)
