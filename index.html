@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="description" content="NIHONGOBASE用マークダウンエディタです">
-  <meta property="fb:app_id" content="1901725903435610"/>
+  <!-- <meta property="fb:app_id" content="1901725903435610"/> -->
   <meta property="og:title" content="Markdown Editor for NIHONGOBASE" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./images/1.png" />
@@ -27,28 +27,27 @@
 	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
 	<title>Markdown Editor for NIHONGOBASE</title>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118266963-1"></script>
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118266963-1"></script> -->
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+	  // window.dataLayer = window.dataLayer || [];
+	  // function gtag(){dataLayer.push(arguments);}
+	  // gtag('js', new Date());
 
-	  gtag('config', 'UA-118266963-1');
+	  // gtag('config', 'UA-118266963-1');
 	</script>
 </head>
 <body>
 	<header class="fixed-top">
 		<nav class="navbar navbar-light bg-light h-100">
 			<h1 class="h5 text-muted my-0">Markdown Editor for NIHONGOBASE</h1>
-			<p class="my-0 text-muted">
-			</p>
+			<a href="./ruby.html"><p class="my-0 text-muted"> ルビふり</p></a>
 		</nav>
 	</header>
-	<main class="py-5" >
-		<div class="sampleCode"style="margin:10px;display: flex; gap: 70px ;">
+	<div class="mainarea">
+		<div class="sidecontents">
 			<div>
-				<p>
-					<strong>hタグ</strong><br>
+				<p class="tagsample">
+					<strong class="tagtitles">hタグ</strong><br>
 					# 見出し1<br>
 					## 見出し2<br>
 					### 見出し3<br>
@@ -58,23 +57,23 @@
 				</p>
 			</div>
 			<div>
-				<p>
-					<strong>Listタグ</strong><br>
+				<p class="tagsample">
+					<strong class="tagtitles">Listタグ</strong><br>
 					- リスト1<br>
 					- リスト2<br>
 					- リスト3<br>
 				</p>
 			</div>
 			<div>
-				<p>
+				<p class="tagsample">
 					<strong>Strongタグ</strong><br>
 							normal **bold** normal<br>
 							normal __bold__ normal
 				</p>
 			</div>
 			<div>
-				<p>
-					<strong>リンクタグ</strong><br>
+				<p class="tagsample">
+					<strong class="tagtitles">リンクタグ</strong><br>
 					[文字](URL)<br>
 					(画像url)<br>
 					![](画像URL =100x) // 縦を省略<br>
@@ -83,84 +82,84 @@
 				</p>
 			</div>
 			<div>
-				<p>
-					<strong>テーブルタグ</strong><br>
+				<p class="tagsample">
+					<strong class="tagtitles">テーブルタグ</strong><br>
 					|カラム|カラム|カラム|<br>
 					|--|--|--|<br>
 					|要素|要素|要素|<br>
 					|要素a|要素b|要素c|<br>
 				</p>
 			</div>
-
-</div>
-<div class="sampleCode" style="margin:10px;display: flex; gap: 100px ;">
-	<div>
-		<p>
-			<strong>blockquoteタグ</strong><br>
-			> こんにちは<br>
-			> こんばんわ
-		</p>
-	</div>
-	<div>
-		<p>
-				<strong>(CODE)ブロックタグ</strong><br>
-				```Plane<br>
-				ここに文章を<br>
-				書いてね<br>
-				```
-			</p>
-	</div>
-	<div>
-		<p>
-			<strong>CODEタグ</strong><br>
-			ここは `注意` です<br>
-			ここは <code>注意</code> です
-		</p>
-	</div>
-	<div>
-		<p>
-			<strong>写真</strong><br>
-     	![](画像URL "")
-		</p>
-	</div>
-	<div>
-		<p>
-				<strong>トグル</strong><br>
-				&lt;details> <br>
-					&lt;summary>表示&lt;/summary><br>
-					中身<br>
-				&lt;/details>
-			</p>
-	</div>
-</div>
-
-
-		<div class="py-3">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-6">
-						<textarea id="editor-main" name="markdown" rows="8" cols="80"></textarea>
-					</div><!-- .col-6 -->
-					<div class="col-6">
-						<div class="row flex-column h-100">
-							<div class="col">
-								<div class="position-relative w-100 h-100">
-									<div class="card position-absolute h-100 w-100">
-										<div id="preview" class="card-body p-3 markdown-body"></div><!-- #preview -->
-									</div><!-- .card -->
-								</div><!-- .position-relative -->
-							</div><!-- .col -->
-							<div class="col-auto mt-3 w-100">
-								<button id="html-copy" type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#copy">
-									<i class="fas fa-paperclip mr-2"></i>HTMLをコピー
-								</button>
-							</div><!-- .col -->
-						</div><!-- .row -->
-					</div><!-- .col-6 -->
-				</div><!-- .row -->
-			</div><!-- .container -->
+			<div>
+				<p class="tagsample">
+					<strong class="tagtitles">blockquoteタグ</strong><br>
+					> こんにちは<br>
+					> こんばんわ
+				</p>
+			</div>
+			<div>
+				<p class="tagsample">
+					<strong class="tagtitles">(CODE)ブロックタグ</strong><br>
+					```Plane<br>
+					ここに文章を<br>
+					書いてね<br>
+					```
+				</p>
+			</div>
+			<div>
+				<p class="tagsample">
+					<strong class="tagtitles">CODEタグ</strong><br>
+					ここは `注意` です<br>
+					ここは <code>注意</code> です
+				</p>
+			</div>
+			<div>
+				<p class="tagsample">
+					<strong class="tagtitles">写真</strong><br>
+					![](画像URL "")
+				</p>
+			</div>
+			<div>
+				<p class="tagsample">
+					<strong class="tagtitles">トグル</strong><br>
+					&lt;details> <br>
+						&lt;summary>表示&lt;/summary><br>
+						中身<br>
+					&lt;/details>
+				</p>
+			</div>
 		</div>
-	</main>
+		<main class="py-5" >
+			<div class="py-3">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-6">
+							<textarea id="editor-main" name="markdown" rows="8" cols="80"></textarea>
+						</div><!-- .col-6 -->
+						<div class="col-6">
+							<div class="row flex-column h-100">
+								<div class="col">
+									<div class="position-relative w-100 h-100">
+										<div class="card position-absolute h-100 w-100">
+											<div id="preview" class="card-body p-3 markdown-body"></div><!-- #preview -->
+										</div><!-- .card -->
+									</div><!-- .position-relative -->
+								</div><!-- .col -->
+								<div class="col-auto mt-3 w-100">
+									<button id="html-copy" type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#copy">
+										<i class="fas fa-paperclip mr-2"></i>HTMLをコピー
+									</button>
+								</div><!-- .col -->
+							</div><!-- .row -->
+						</div><!-- .col-6 -->
+					</div><!-- .row -->
+				</div><!-- .container -->
+			</div>
+		</main>
+	</div>
+
+
+
 	<footer class="fixed-bottom bg-light">
 		<div class="container-fluid h-100">
 			<div class="row align-items-center justify-content-between h-100">

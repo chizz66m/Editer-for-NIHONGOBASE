@@ -1,6 +1,8 @@
 .CodeMirror {
 	height: calc(100vh - 8rem);
 }
+
+
 #preview {
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
@@ -22,4 +24,36 @@ footer {
 
 .markdown-body img {
 	height: auto;
+}
+
+.col-6{
+	width: 800px;
+}
+.py-5{
+	margin: 0 auto
+}
+
+.mainarea{
+	display: flex;
+	width: 100%;
+}
+
+.sidecontents{
+	width: 250px;
+	margin-top: 50px;
+	padding: 15px;
+	border-right-color: #f5f5f5;
+	border-right-style: solid;
+}
+.tagsample{
+	font-size: 12px;
+}
+
+.tagtitles{
+	font-size: 14px;
+}
+
+
+.apiarea{
+	display: flex;
 }

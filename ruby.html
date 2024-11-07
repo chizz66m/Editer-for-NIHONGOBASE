@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="NIHONGOBASE用マークダウンエディタです">
+  <meta property="fb:app_id" content=""/>
+  <meta property="og:title" content="Markdown Editor for NIHONGOBASE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./images/1.png" />
+  <meta property="og:description" content="NIHONGOBASE用マークダウンエディタです">
+  <meta name="twitter:card" content="summary" />
+  <link rel="apple-touch-icon" href="./images/icon.png" />
+  <link rel="icon" href="./images/fabicon.png" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css">
+	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="./css/style_ruby.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script> -->
+	<title>Markdown Editor for NIHONGOBASE</title>
+
+</head>
+<body>
+	<header class="fixed-top">
+		<nav class="navbar navbar-light bg-light h-100">
+			<h1 class="h5 text-muted my-0">Markdown Editor for NIHONGOBASE</h1>
+			<a href="./index.html"><p class="my-0 text-muted"> Editer</p></a>
+		</nav>
+	</header>
+	<div class="mainarea">
+		<div class="sidecontents">
+			<div>
+				<p class="tagsample">
+					<strong class="tagtitles">ルビふり</strong>
+				</p>
+			</div>
+		</div>
+
+		<div class="maincontents">
+
+			<div class="main_block">
+				<div class="text_keep_area">
+					<p>ここにHTMLをキープしよう</p>
+					<textarea name="" id="text_keep_area"></textarea>
+				</div>
+			</div>
+
+			<div class="main_block">
+				<div class="text_to_ruby">
+					<p>ルビを振りたいテキスト入力</p>
+					<textarea name="" id="text_to_ruby_area"></textarea>
+					<div class="text_to_ruby_btnarea">
+						<button> ルビをふる </button>
+					</div>
+				</div>
+
+				<p style="margin-top: 15px;">出力結果</p>
+				<div class="preview_Area">
+					<div id="output_ruby"></div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+
+	<footer class="fixed-bottom bg-light">
+		<div class="container-fluid h-100">
+			<div class="row align-items-center justify-content-between h-100">
+				<div class="col-auto">
+					<p class="my-0 text-muted"><small>※画面構成や仕様は突然変更される場合がございますがご了承下さい</small></p>
+				</div><!-- .col -->
+			</div><!-- .row -->
+		</div>
+	</footer>
+	<div class="modal fade" id="copy" tabindex="-1" role="dialog" aria-labelledby="copy" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<p class="text-center m-0 py-3">コピーしました！</p>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// const apiKey = "dj00aiZpPVN0SXR3VXVTYVBsQyZzPWNvbnN1bWVyc2VjcmV0Jng9YjE-";
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelector(".text_to_ruby_btnarea button").addEventListener("click", addRuby);
+		});
+
+		async function addRuby() {
+			const textToRuby = document.getElementById("text_to_ruby_area").value;
+			const outputRuby = document.getElementById("output_ruby");
+
+			// Yahoo APIのURLとキー（取得したAPIキーを設定してください）
+			const url = "https://jlp.yahooapis.jp/FuriganaService/V2/furigana";
+			const apiKey = "dj00aiZpPVN0SXR3VXVTYVBsQyZzPWNvbnN1bWVyc2VjcmV0Jng9YjE-"; // APIキーをここに入力してください
+
+			// APIリクエストボディ
+			const requestBody = {
+				id: "1",
+				jsonrpc: "2.0",
+				method: "jlp.furiganaservice.furigana",
+				params: {
+					q: textToRuby,
+					grade: 1 // 漢字のルビを設定する学年。ここでは全てにルビを振ります
+				}
+			};
+
+			// APIリクエスト
+			try {
+				const response = await fetch(url, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"User-Agent": "Yahoo AppID: " + apiKey
+					},
+					body: JSON.stringify(requestBody)
+				});
+
+				const data = await response.json();
+				const rubyText = data.result.word.map((word) => {
+					if (word.furigana) {
+						return `<ruby>${word.surface}<rt>${word.furigana}</rt></ruby>`;
+					} else {
+						return word.surface;
+					}
+				}).join("");
+
+				outputRuby.innerHTML = rubyText;
+			} catch (error) {
+				console.error("エラーが発生しました:", error);
+				outputRuby.innerHTML = "エラーが発生しました。";
+			}
+		}
+	</script>
+</body>
+</html>
