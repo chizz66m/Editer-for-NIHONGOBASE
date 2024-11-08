@@ -35,7 +35,7 @@
 			<a href="./index.html"><p class="my-0 text-muted"> Editer</p></a>
 		</nav>
 	</header>
-	<div class="mainarea">
+	<div class="mainarea" >
 		<div class="sidecontents">
 			<div>
 				<p class="tagsample">
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 
-		<div class="maincontents">
+		<div class="maincontents" style="margin-bottom:150px;">
 
 			<div class="main_block">
 				<div class="text_keep_area">
@@ -67,6 +67,7 @@
 				<div class="preview_Area">
 					<div id="output_ruby"></div>
 				</div>
+				<button onclick="copyToClipboard()">HTMLでコピーする</button>
 			</div>
 
 
@@ -86,13 +87,6 @@
 			</div><!-- .row -->
 		</div>
 	</footer>
-	<div class="modal fade" id="copy" tabindex="-1" role="dialog" aria-labelledby="copy" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<p class="text-center m-0 py-3">コピーしました！</p>
-			</div>
-		</div>
-	</div>
 
 	<script>
 		async function addRuby() {
@@ -111,7 +105,6 @@
 					const data = await response.json();
 					const rubyText = data.result.word.map((word) => {
 						if (word.furigana) {
-							console.log(<ruby>${word.surface}<rt>${word.furigana}</rt></ruby>)
 							return `<ruby>${word.surface}<rt>${word.furigana}</rt></ruby>`;
 						} else {
 							return word.surface;
@@ -123,7 +116,19 @@
 					console.error("エラーが発生しました:", error);
 					outputRuby.innerHTML = "エラーが発生しました。";
 				}
-			}
+		}
+		function copyToClipboard() {
+			const outputRuby = document.getElementById("output_ruby");
+			const htmlContent = outputRuby.innerHTML; // output_ruby内のHTMLを取得
+
+			navigator.clipboard.writeText(htmlContent)
+				.then(() => {
+					alert("HTML構造がクリップボードにコピーされました！");
+				})
+				.catch((err) => {
+					console.error("コピーに失敗しました:", err);
+				});
+		}
 	</script>
 </body>
 </html>
