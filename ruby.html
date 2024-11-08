@@ -58,7 +58,8 @@
 					<p>ルビを振りたいテキスト入力</p>
 					<textarea name="" id="text_to_ruby_area"></textarea>
 					<div class="text_to_ruby_btnarea">
-						<button> ルビをふる </button>
+						<!-- <button> ルビをふる </button> -->
+						 <button onclick="addRuby()">ルビをふる</button>
 					</div>
 				</div>
 
@@ -94,56 +95,35 @@
 	</div>
 
 	<script>
-		// const apiKey = "dj00aiZpPVN0SXR3VXVTYVBsQyZzPWNvbnN1bWVyc2VjcmV0Jng9YjE-";
-		document.addEventListener("DOMContentLoaded", function () {
-			document.querySelector(".text_to_ruby_btnarea button").addEventListener("click", addRuby);
-		});
-
 		async function addRuby() {
-			const textToRuby = document.getElementById("text_to_ruby_area").value;
-			const outputRuby = document.getElementById("output_ruby");
+				const textToRuby = document.getElementById("text_to_ruby_area").value;
+				const outputRuby = document.getElementById("output_ruby");
 
-			// Yahoo APIのURLとキー（取得したAPIキーを設定してください）
-			const url = "https://jlp.yahooapis.jp/FuriganaService/V2/furigana";
-			const apiKey = "dj00aiZpPVN0SXR3VXVTYVBsQyZzPWNvbnN1bWVyc2VjcmV0Jng9YjE-"; // APIキーをここに入力してください
+				try {
+					const response = await fetch("furigana_proxy.php", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded"
+						},
+						body: new URLSearchParams({ text: textToRuby })
+					});
 
-			// APIリクエストボディ
-			const requestBody = {
-				id: "1",
-				jsonrpc: "2.0",
-				method: "jlp.furiganaservice.furigana",
-				params: {
-					q: textToRuby,
-					grade: 1 // 漢字のルビを設定する学年。ここでは全てにルビを振ります
+					const data = await response.json();
+					const rubyText = data.result.word.map((word) => {
+						if (word.furigana) {
+							console.log(<ruby>${word.surface}<rt>${word.furigana}</rt></ruby>)
+							return `<ruby>${word.surface}<rt>${word.furigana}</rt></ruby>`;
+						} else {
+							return word.surface;
+						}
+					}).join("");
+
+					outputRuby.innerHTML = rubyText;
+				} catch (error) {
+					console.error("エラーが発生しました:", error);
+					outputRuby.innerHTML = "エラーが発生しました。";
 				}
-			};
-
-			// APIリクエスト
-			try {
-				const response = await fetch(url, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						"User-Agent": "Yahoo AppID: " + apiKey
-					},
-					body: JSON.stringify(requestBody)
-				});
-
-				const data = await response.json();
-				const rubyText = data.result.word.map((word) => {
-					if (word.furigana) {
-						return `<ruby>${word.surface}<rt>${word.furigana}</rt></ruby>`;
-					} else {
-						return word.surface;
-					}
-				}).join("");
-
-				outputRuby.innerHTML = rubyText;
-			} catch (error) {
-				console.error("エラーが発生しました:", error);
-				outputRuby.innerHTML = "エラーが発生しました。";
 			}
-		}
 	</script>
 </body>
 </html>
